@@ -1,0 +1,23 @@
+name: Build Docker Images
+on: [push]
+
+jobs:
+  tox:
+    name: tox-base
+    runs-on: ubuntu-latest
+    steps:
+      - id: gosu
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+            repository: tianon/gosu
+      - uses: actions/checkout@v2
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: pozetroninc/tox-base
+          dockerfile: Dockerfile
+          build_args: GOSU_VERSION=${{ steps.gosu.outputs.release }}
+          tags: latest
+          tag_with_ref: true
+          tag_with_sha: true
