@@ -18,6 +18,6 @@ jobs:
           repository: pozetroninc/tox-base
           dockerfile: Dockerfile
           build_args: GOSU_VERSION=${{ steps.gosu.outputs.release }}
-          tags: pozetroninc/docker-tox:latest
+          tags: pozetroninc/tox-base:latest
           tag_with_ref: true
           tag_with_sha: true
