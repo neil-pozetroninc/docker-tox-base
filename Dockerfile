@@ -73,7 +73,7 @@ RUN set -eux; \
 	gosu --version; \
 	gosu nobody true
 
-RUN pyenv local 3.10.6 && \
+RUN pyenv local 3.11.5 && \
     python -m pip install -U pip && \
     python -m pip install tox==3.25.1 && \
     pyenv local --unset && \
